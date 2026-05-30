@@ -1,0 +1,23 @@
+### 2. `buildspec.yml`
+```yaml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "[+] Bootstrapping system security libraries..."
+  pre_build:
+    commands:
+      - echo "[+] Readying target scripts for OWASP LLM evaluation runs..."
+  build:
+    commands:
+      - echo "[+] Running GenAI/LLM Application Security Assessment Phase..."
+      - python owasp_llm_scanner.py
+  post_build:
+    commands:
+      - echo "[+] DevSecOps automated validation pass completed successfully."
+artifacts:
+  files:
+    - owasp_llm_report.json
